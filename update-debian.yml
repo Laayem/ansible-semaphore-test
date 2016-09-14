@@ -14,10 +14,6 @@
      register: kexec
      stat: path=/usr/bin/kexec-reboot get_md5=no
 
-   - name: Reboot the services
-     shell: needrestart -ra -l
-     when: reboot.stat.exists == false
-
    - name: Reboot the server using reboot
      command: /sbin/reboot
      when: reboot.stat.exists == true and kexec.stat.exists == false
